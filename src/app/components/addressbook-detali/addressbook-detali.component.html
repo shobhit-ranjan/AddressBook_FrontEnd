@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div class="main-content">
+    <div class="header-content">
+
+        <div class="add-detail-text">
+            Person Details
+        </div>
+
+        <a class="add-button" routerLink="/home">
+
+            <img src="../../../assets/icons/add-24px.svg">Add Person
+
+        </a>
+    </div>
+
+    <div class="table-main">
+        <table id="display" class="table">
+            <tr>
+                <th>Fullname</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip Code</th>
+                <th>Phone Number</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let add of address">
+                <td>{{add.firstname | uppercase}}</td>
+                <td>{{add.address}}</td>
+                <td>{{add.city | uppercase}}</td>
+                <td>{{add.state}}</td>
+                <td>{{add.zipcode}}</td>
+                <td>{{add.phone}}</td>
+                <td>
+                    <mat-icon (click)=onDelete(add.sno)>delete</mat-icon>
+
+                    <mat-icon>create</mat-icon>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<app-header></app-header>
+
+<div class="form-content">
+    <div class="form-dev">
+        <div class="form-head">
+            <div class="form-title">
+                PERSON ADDRESS FORM
+            </div>
+        </div>
+
+        <form class="form" #userForm="ngForm" novalidate>
+            <div class="column-content">
+                <label class="label text">Full Name</label>
+                <input class="input" required #firstname="ngModel"
+                    [class.is-invalid]="firstname.invalid && firstname.touched" type="text" name="firstname" ngModel
+                    required placeholder="Full Name" pattern="[A-Z][a-z]{4,}">
+                <small [hidden]="firstname.valid || firstname.untouched">Name length should be more the 3 letters
+                </small>
+            </div>
+
+            <div class="column-content">
+                <label class="label text">Phone Number</label>
+                <input class="input" required #phonenumber="ngModel"
+                    [class.is-invalid]="phonenumber.invalid && phonenumber.touched" type="number" name="phone" ngModel
+                    required placeholder="Phone number" pattern="[0-9]{10}$">
+                <small [hidden]="phonenumber.valid || phonenumber.untouched">Phone num should be 10 digit
+                </small>
+
+            </div>
+
+
+            <div class="column-content">
+                <label class="label text">Address </label>
+                <input class="input" required #address="ngModel" [class.is-invalid]="address.invalid && address.touched"
+                    type="text" name="address" ngModel required placeholder="Address">
+                <small [hidden]="address.valid || address.untouched">Address should be of length 5</small>
+
+            </div>
+
+            <div class="space">
+
+                <div class="row-content-address">
+                    <div class="column-content-city">
+                        <label class="label text">City </label>
+                        <select name="city" ngModel>
+                            <option *ngFor="let citydisplayed of city" value="{{citydisplayed}}">
+                                {{citydisplayed}}</option>
+                        </select>
+                    </div>
+                    <div class="column-content">
+                        <div class="column-content-state">
+                            <label class="label text">Select State</label>
+                            <select name="state" ngModel>
+                                <option *ngFor="let statedisplayed of state" value="{{statedisplayed}}">
+                                    {{statedisplayed}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="column-content">
+                        <div class="column-content-pin">
+                            <label class="label text">Select PinCode</label>
+                            <select name="zipcode" ngModel>
+                                <option *ngFor="let pindisplayed of pinCode" value="{{pindisplayed}}">
+                                    {{pindisplayed}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="buttonspace">
+
+                <div class="add-reset">
+                    <button mat-raised-button type="submit" class="addButton button"
+                        (click)="onSumbit(userForm)">Add</button>
+                    <button mat-raised-button type="reset" class="resetButton button"
+                        onClick="formReset()">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
